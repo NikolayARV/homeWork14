@@ -193,7 +193,7 @@ public class Car {
     public static class Insurance {
         private final LocalDate expareDate;
         private final double cost;
-        private final String number;
+        private  String number ="123456789";
 
         public Insurance(LocalDate expareDate, double cost, String number) {
             if (expareDate == null) {
@@ -202,8 +202,8 @@ public class Car {
                 this.expareDate = expareDate;
             }
             this.cost = cost;
-            if (number == null) {
-                this.number = "123456789";
+            if (number.length()!=9) {
+                this.number = "некорректный";
             } else {
                 this.number = number;
             }
@@ -244,9 +244,9 @@ public class Car {
             return brand + " " + model + ", " +
                     "коробка передач " + transmisson + ", "
                     + "тип кузова " + bodyType + " , количество мест "
-                    + numberOfSeats + ", рег.номер " + registrNumber + ", " + year + " года выпуска, сборка в " + country + ", " + color + " цвета, объем двигателя - " + engineVolume + " л," +
-                    " летние шины " + summerTires + (getKey().isKeyLessAccess() ? "безключевой доступ":"ключевой доступ") +
-                    ". Номер страховки" + getInsurance().getNumber() + ". Стоимост страховки" + getInsurance().getCost();
+                    + numberOfSeats + ", рег.номер " + registrNumber + ", " + year + " года выпуска, сборка в " + country + ", " + color + " цвета, объем двигателя - " + engineVolume + " л,"
+                    + (isSummerTires()? " летние шины ":" зимние шины") + (getKey().isRemoteEngineStart()? " удаленный запуск": " нет удаленного запуска ")+(getKey().isKeyLessAccess() ? " безключевой доступ ":" ключевой доступ ") +
+                    ". Номер страховки " + getInsurance().getNumber() + ". Стоимост страховки " + getInsurance().getCost();
         }
     }
 
