@@ -4,13 +4,8 @@ import java.time.LocalDate;
 import java.util.regex.Pattern;
 
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
     private float engineVolume;
-    private final String color;
-    private final int year;
-    private final String country;
     private String transmisson;
     private String bodyType;
     private String registrNumber;
@@ -19,22 +14,6 @@ public class Car {
     private Key key;
     private Insurance insurance;
 
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
 
     public String getBodyType() {
         return bodyType;
@@ -46,10 +25,6 @@ public class Car {
 
     public float getEngineVolume() {
         return engineVolume;
-    }
-
-    public String getColor() {
-        return color;
     }
 
     public String getTransmisson() {
@@ -124,32 +99,14 @@ public class Car {
         setSummerTires(!this.summerTires);
     }
 
-    public Car(String brand, String model, float engineVolume, String color, int year, String country, Key key, Insurance insurance) {
-        if (brand == null) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-        if (model == null) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
-        if (country == null) {
-            this.country = "default";
-        } else {
-            this.country = country;
-        }
+    public Car(String brand, String model, float engineVolume, String color, int year, String country, Key key, Insurance insurance, int speedMax) {
+       super(brand, model, year, country, color, speedMax);
         if (engineVolume <= 0) {
             this.engineVolume = 1.5f;
         } else {
             this.engineVolume = engineVolume;
         }
-        if (color == null) {
-            this.color = "белого";
-        } else {
-            this.color = color;
-        }
+
         if (key == null) {
             this.key = new Key();
         } else {
@@ -160,11 +117,7 @@ public class Car {
         } else {
             this.insurance = insurance;
         }
-        if (year <= 0) {
-            this.year = 2000;
-        } else {
-            this.year = year;
-        }
+
 
     }
 
@@ -193,7 +146,7 @@ public class Car {
     public static class Insurance {
         private final LocalDate expareDate;
         private final double cost;
-        private  String number ="123456789";
+        private String number = "123456789";
 
         public Insurance(LocalDate expareDate, double cost, String number) {
             if (expareDate == null) {
@@ -202,7 +155,7 @@ public class Car {
                 this.expareDate = expareDate;
             }
             this.cost = cost;
-            if (number.length()!=9) {
+            if (number.length() != 9) {
                 this.number = "некорректный";
             } else {
                 this.number = number;
@@ -210,7 +163,7 @@ public class Car {
         }
 
         public Insurance() {
-            this(null,10000,null);
+            this(null, 10000, null);
         }
 
         public LocalDate getExpareDate() {
@@ -226,28 +179,40 @@ public class Car {
         }
 
         public void checkInsDate() {
-            if (expareDate.isBefore(LocalDate.now()) || expareDate.isEqual(LocalDate.now())){
+            if (expareDate.isBefore(LocalDate.now()) || expareDate.isEqual(LocalDate.now())) {
                 System.out.println("Нужно срочно ехать оформлять новую страховку");
             }
         }
 
         public void checkNumber() {
-            if (number.length()!=9){
+            if (number.length() != 9) {
                 System.out.println("Номер страховки некорректный");
             }
         }
-        }
+    }
 
-        @Override
+    @Override
+    public void refill() {
+        if (getBrand() == "Audi") {
+            System.out.println("необходимо заправиться дизелем");
+        } else if (getBrand() == "BMW") {
+            System.out.println("необходимо заряжать на специальных электропарковках");
+        } else {
+            System.out.println("необходимо заправиться бензином");
 
-        public String toString() {
-            return brand + " " + model + ", " +
-                    "коробка передач " + transmisson + ", "
-                    + "тип кузова " + bodyType + " , количество мест "
-                    + numberOfSeats + ", рег.номер " + registrNumber + ", " + year + " года выпуска, сборка в " + country + ", " + color + " цвета, объем двигателя - " + engineVolume + " л,"
-                    + (isSummerTires()? " летние шины ":" зимние шины") + (getKey().isRemoteEngineStart()? " удаленный запуск": " нет удаленного запуска ")+(getKey().isKeyLessAccess() ? " безключевой доступ ":" ключевой доступ ") +
-                    ". Номер страховки " + getInsurance().getNumber() + ". Стоимост страховки " + getInsurance().getCost();
         }
     }
+
+    @Override
+
+    public String toString() {
+        return getBrand() + " " + getModel() + ", " +
+                "коробка передач " + transmisson + ", "
+                + "тип кузова " + bodyType + " , количество мест "
+                + numberOfSeats + ", рег.номер " + registrNumber + ", " + getYear() + " года выпуска, сборка в " + getCountry() + ", " + getColor() + " цвета, объем двигателя - " + engineVolume + " л,"
+                + (isSummerTires() ? " летние шины " : " зимние шины") + (getKey().isRemoteEngineStart() ? " удаленный запуск" : " нет удаленного запуска ") + (getKey().isKeyLessAccess() ? " безключевой доступ " : " ключевой доступ ") +
+                ". Номер страховки " + getInsurance().getNumber() + ". Стоимост страховки " + getInsurance().getCost() + " максималочка " + getSpeedMax() + " км/ч";
+    }
+}
 
 
