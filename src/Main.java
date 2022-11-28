@@ -68,17 +68,17 @@ public class Main {
         Train leningrad = new Train("Ленинград", "D-125", 2019, "в России", null, 270, 1700, 8, "Ленинградского вокзала", "Ленинград-Пассажирский", 8);
         System.out.println(lastochka);
         System.out.println(leningrad);
-        Bus pazik = new Bus("Пазик", "1235", 2005, "России", "желтого", 95);
-        Bus gazel = new Bus("Газель", "Бизнес", 2008, "России", "желтого", 120);
-        Bus ikarus = new Bus("Икарус", "115", 1986, "России", "красного", 95);
-        System.out.println(pazik);
-        System.out.println(gazel);
-        System.out.println(ikarus);
-        lastochka.refill();
-        audi.refill();
-        bmw.refill();
-        gazel.refill();
-        kia.refill();
+        //Bus pazik = new Bus("Пазик", "1235", 2005, "России", "желтого", 95);
+        //Bus gazel = new Bus("Газель", "Бизнес", 2008, "России", "желтого", 120);
+        //Bus ikarus = new Bus("Икарус", "115", 1986, "России", "красного", 95);
+        //System.out.println(pazik);
+        //System.out.println(gazel);
+        //System.out.println(ikarus);
+        //lastochka.refill();
+        //audi.refill();
+        //bmw.refill();
+        //gazel.refill();
+        //kia.refill();
     }
 
 }

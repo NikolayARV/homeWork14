@@ -9,8 +9,10 @@ public class Train extends Transport {
     private String finalStation;
     private int numberOfWagons;
 
-    public Train(String brand, String model, int year, String country, String color, int speedMax, int price, int time, String depStation, String finalStation, int numberOfWagons) {
-        super(brand, model, year, country, color, speedMax);
+    public Train(String brand, String model, int year,
+                 String country, String color, int speedMax, int price,
+                 int time, String depStation, String finalStation, int numberOfWagons) {
+        super(brand, model);
         this.price = validatePrice(price);
         this.time = validateTime(time);
         this.depStation = validateValues(depStation) ;
@@ -58,16 +60,26 @@ public class Train extends Transport {
         this.numberOfWagons = validateWagons(numberOfWagons);
     }
 
+    //@Override
+    //    public void refill() {
+    //        if (time > 10) {
+    //            System.out.println("необходима заправка дизелем");
+    //        }
+    //    }
+
     @Override
-    public void refill() {
-        if (time > 10) {
-            System.out.println("необходима заправка дизелем");
-        }
+    public void startMoving() {
+        System.out.println("поехали");
+    }
+
+    @Override
+    public void stopMoving() {
+        System.out.println("приехали");
     }
 
     @Override
     public String toString() {
-        return "Поезд " +  getBrand() + ", модель " + getModel() + ", " + getYear() + " год выпуска " + getCountry() + ", скорость передвижения - " + getSpeedMax() + " км/ч, отходит от " +
+        return "Поезд " +  getBrand() + ", модель " + getModel() + ", "  + " , отходит от " +
                 getDepStation() + " и следует до станции " +getFinalStation() + ". Цена поездки — " + getPrice() + " рублей, в поезде " + getNumberOfWagons() + " вагонов.";
     }
 }
