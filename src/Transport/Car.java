@@ -3,19 +3,25 @@ package Transport;
 import java.time.LocalDate;
 import java.util.regex.Pattern;
 
-
 public class Car extends Transport implements Competing {
+
+
+
     private String transmisson;
-    private String bodyType;
     private String registrNumber;
     private int numberOfSeats;
     private boolean summerTires;
     private Key key;
     private Insurance insurance;
+    private BodyType bodyType;
 
 
-    public String getBodyType() {
+    public BodyType getBodyType() {
         return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 
     public int getNumberOfSeats() {
@@ -62,13 +68,7 @@ public class Car extends Transport implements Competing {
         }
     }
 
-    public void setBodyType(String bodyType) {
-        if (bodyType == null) {
-            this.bodyType = "не указано";
-        } else {
-            this.bodyType = bodyType;
-        }
-    }
+
 
     public void setNumberOfSeats(int numberOfSeats) {
         if (numberOfSeats >= 2 && numberOfSeats < 9) {
@@ -102,7 +102,7 @@ public class Car extends Transport implements Competing {
         }
     }
 
-    public Car(String brand, String model, float engineVolume) {
+    public Car(String brand, String model, BodyType bodyType,  float engineVolume) {
         super(brand, model, engineVolume);
     }
 
@@ -176,17 +176,16 @@ public class Car extends Transport implements Competing {
         }
     }
 
-    //@Override
-    //    public void refill() {
-    //        if (getBrand() == "Audi") {
-    //            System.out.println("необходимо заправиться дизелем");
-    //        } else if (getBrand() == "BMW") {
-    //            System.out.println("необходимо заряжать на специальных электропарковках");
-    //        } else {
-    //            System.out.println("необходимо заправиться бензином");
-    //
-    //        }
-    //    }
+    @Override
+    public void printType() {
+        if (bodyType == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            System.out.println("Тип авто - " + bodyType);
+        }
+
+    }
+
 
     @Override
     public void goToPitStop() {
@@ -220,16 +219,6 @@ public class Car extends Transport implements Competing {
 
     }
 
-    @Override
-
-    public String toString() {
-        return getBrand() + " " + getModel() + ", " +
-                "коробка передач " + transmisson + ", ";
-        //+ "тип кузова " + bodyType + " , количество мест "
-        // + numberOfSeats + ", рег.номер " + registrNumber + ", " + getYear() + " года выпуска, сборка в " + getCountry() + ", " + getColor() + " цвета, объем двигателя - " + engineVolume + " л,"
-        //+ (isSummerTires() ? " летние шины " : " зимние шины") + (getKey().isRemoteEngineStart() ? " удаленный запуск" : " нет удаленного запуска ") + (getKey().isKeyLessAccess() ? " безключевой доступ " : " ключевой доступ ") +
-        // ". Номер страховки " + getInsurance().getNumber() + ". Стоимост страховки " + getInsurance().getCost() + " максималочка " + getSpeedMax() + " км/ч";
-    }
 }
 
 

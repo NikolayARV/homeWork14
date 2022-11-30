@@ -1,0 +1,5 @@
+package Transport;
+
+public enum BodyType {SEDAN, HATCHBACK, CUPE, UNIVERSAL, VNEDOROGNIK, SUV, PICKUP, FURGON, MINIVAN
+
+}

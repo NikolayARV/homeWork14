@@ -78,6 +78,11 @@ public class Train extends Transport {
     }
 
     @Override
+    public void printType() {
+
+    }
+
+    @Override
     public String toString() {
         return "Поезд " +  getBrand() + ", модель " + getModel() + ", "  + " , отходит от " +
                 getDepStation() + " и следует до станции " +getFinalStation() + ". Цена поездки — " + getPrice() + " рублей, в поезде " + getNumberOfWagons() + " вагонов.";
