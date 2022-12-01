@@ -6,23 +6,15 @@ import java.util.regex.Pattern;
 public class Car extends Transport implements Competing {
 
 
-
+    private BodyType bodyType;
     private String transmisson;
     private String registrNumber;
     private int numberOfSeats;
     private boolean summerTires;
     private Key key;
     private Insurance insurance;
-    private BodyType bodyType;
+    //private BodyType bodyType;
 
-
-    public BodyType getBodyType() {
-        return bodyType;
-    }
-
-    public void setBodyType(BodyType bodyType) {
-        this.bodyType = bodyType;
-    }
 
     public int getNumberOfSeats() {
         return numberOfSeats;
@@ -48,6 +40,10 @@ public class Car extends Transport implements Competing {
         return key;
     }
 
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
     public void setTransmisson(String transmisson) {
         if (transmisson == null) {
             this.transmisson = "Не указано";
@@ -68,7 +64,9 @@ public class Car extends Transport implements Competing {
         }
     }
 
-
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
+    }
 
     public void setNumberOfSeats(int numberOfSeats) {
         if (numberOfSeats >= 2 && numberOfSeats < 9) {
@@ -102,8 +100,9 @@ public class Car extends Transport implements Competing {
         }
     }
 
-    public Car(String brand, String model, BodyType bodyType,  float engineVolume) {
+    public Car(String brand, String model, BodyType bodyType, float engineVolume) {
         super(brand, model, engineVolume);
+        this.bodyType=bodyType;
     }
 
     public static class Key {
@@ -176,16 +175,6 @@ public class Car extends Transport implements Competing {
         }
     }
 
-    @Override
-    public void printType() {
-        if (bodyType == null) {
-            System.out.println("Данных по транспортному средству недостаточно");
-        } else {
-            System.out.println("Тип авто - " + bodyType);
-        }
-
-    }
-
 
     @Override
     public void goToPitStop() {
@@ -218,6 +207,15 @@ public class Car extends Transport implements Competing {
     public void refill() {
 
     }
+
+    @Override
+    public void printType() {
+        if (bodyType == null) {
+            System.out.println("Данных по транспортному средству недостаточно.");}
+        else {
+            System.out.println(bodyType);
+        }
+        }
 
 }
 

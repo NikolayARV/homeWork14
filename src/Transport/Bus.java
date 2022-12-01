@@ -1,18 +1,18 @@
 package Transport;
 
 public class Bus extends Transport implements Competing {
-    private Capacity capacity;
-
-    public Bus(String brand, String model, Capacity capacity, float engineVolume) {
+    private BusCapacity busCapacity;
+    public Bus(String brand, String model, BusCapacity busCapacity, float engineVolume) {
         super(brand, model, engineVolume);
+        this.busCapacity = busCapacity;
     }
 
-    public Capacity getCapacity() {
-        return capacity;
+    public BusCapacity getBusCapacity() {
+        return busCapacity;
     }
 
-    public void setCapacity(Capacity capacity) {
-        this.capacity = capacity;
+    public void setBusCapacity(BusCapacity busCapacity) {
+        this.busCapacity = busCapacity;
     }
 
     @Override
@@ -47,13 +47,14 @@ public class Bus extends Transport implements Competing {
     }
 
     @Override
+    public void printType() {
+        System.out.println(busCapacity);
+    }
+
+    @Override
     public String toString() {
         return "Марка " + getBrand() + ", модель -  " + getModel() + ", объем двигателя - " + getEngineVolume() + " л." + getClass();
     }
 
-    @Override
-    public void printType() {
-        System.out.println(capacity.getFrom());
 
-    }
 }

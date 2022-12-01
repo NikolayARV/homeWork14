@@ -1,12 +1,11 @@
 package Transport;
 
-public enum LoadCapacity {N1(0.0f, 3.5f)
-    , N2(3.5f,12.0f)
-    , N3(12.0f,0.0f);
-    private final float from;
-    private final float to;
+public enum LoadCapacity {
+    N1(null, 3.5f), N2(3.5f, 12f), N3(12f, null);
+    private Float from;
+    private Float to;
 
-    LoadCapacity(float from, float to) {
+    LoadCapacity(Float from, Float to) {
         this.from = from;
         this.to = to;
     }
@@ -21,15 +20,14 @@ public enum LoadCapacity {N1(0.0f, 3.5f)
 
     @Override
     public String toString() {
+        if (getFrom() == null) {
+            return  "Грузоподъемность: до " + getTo() + " тонн";
+        } else if (getTo() == null) {
+           return "Грузоподъемность: от " + getFrom() + " тонн";
+        } else if (getFrom() != null && getTo() != null) {
+            return "Грузоподъемность: " + getFrom() + " тонн до " + getTo() + " тонн";
+        } else
+            return "Данные не заданы";
 
-        if (getFrom() == 0.0f) {
-            return "Грузоподъемность: до " + getTo() + " тонн";
-        } else if (getFrom() != 0.0f && getTo()!=0.0f) {
-            return "Грузоподъемность: от " + getFrom() + " до  " + getTo() + " тонн";
-
-        }
-
-        return "Грузоподъемность: от " + getFrom() + " тонн";
     }
 }
-
