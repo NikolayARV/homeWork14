@@ -132,6 +132,8 @@ public abstract class Transport {
     public abstract void startMoving();
 
     public abstract void stopMoving();
+
+    public abstract void printType();
     @Override
     public String toString() {
         return "Марка " + getBrand() + ", модель -  " + getModel() + ", объем двигателя - " + getEngineVolume() + " л." + getClass();

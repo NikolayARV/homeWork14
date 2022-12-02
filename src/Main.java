@@ -17,31 +17,31 @@ public class Main {
         Car lada = new Car("Lada", "Granta", 1.7f, "желтого", 2015, "в России", (new Car.Key(false, false)), (new Car.Insurance(LocalDate.now(), 12520, "12358")),-5);
 
         lada.setTransmisson("manual");
-        lada.setBodyType("sedan");
+
         lada.setSummerTires(true);
         lada.setRegistrNumber("в586аа185");
         lada.setNumberOfSeats(5);
         Car audi = new Car("Audi", "A8 50 L TDI quattro", 3.0f, "черного", 2020, "в Германии", (new Car.Key(true, true)), (new Car.Insurance(LocalDate.now(), 52000, "123456789")),400);
         audi.setTransmisson("auto");
-        audi.setBodyType("sedan");
+
         audi.setSummerTires(true);
         audi.setRegistrNumber("x666xx999");
         audi.setNumberOfSeats(4);
         Car bmw = new Car("BMW", "Z8", 3.0f, "черного", 2021, "в Германии", (new Car.Key(true, false)), (new Car.Insurance(LocalDate.now(), 85236, "8563214598l")), 590);
         bmw.setTransmisson("auto");
-        bmw.setBodyType("cupe");
+
         bmw.setSummerTires(true);
         bmw.setRegistrNumber("d658ff999");
         bmw.setNumberOfSeats(2);
         Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4f, "красного", 2018, "в Юнной Корее", (new Car.Key(true, false)), (new Car.Insurance(LocalDate.now(), 89654, "lfkmfkfk4152")), 250);
         kia.setTransmisson("auto");
-        kia.setBodyType("suv");
+
         kia.setSummerTires(true);
         kia.setRegistrNumber("d898ee856");
         kia.setNumberOfSeats(5);
         Car hyundai = new Car("Hyundai", "Solaris", -5, null, 2016, "в Южной Корее", (new Car.Key(false, true)), (new Car.Insurance(LocalDate.now(), 89654, "lfkmfkfk4152")), 250);
         hyundai.setTransmisson("manual");
-        hyundai.setBodyType("sedan");
+
         hyundai.setSummerTires(false);
         hyundai.setRegistrNumber("r986gg963");
         hyundai.setNumberOfSeats(5);

@@ -2,9 +2,21 @@ package Transport;
 
 public class Truck extends Transport implements Competing {
 
-    public Truck(String brand, String model, float engineVolume) {
-        super(brand, model, engineVolume);
+    private LoadCapacity loadCapacity;
 
+
+    public Truck(String brand, String model, LoadCapacity loadCapacity, float engineVolume) {
+        super(brand, model, engineVolume);
+        this.loadCapacity = loadCapacity;
+
+    }
+
+    public LoadCapacity getLoadCapacity() {
+        return loadCapacity;
+    }
+
+    public void setLoadCapacity(LoadCapacity loadCapacity) {
+        this.loadCapacity = loadCapacity;
     }
 
     @Override
@@ -39,8 +51,18 @@ public class Truck extends Transport implements Competing {
     }
 
     @Override
+    public void printType() {
+
+        System.out.println(loadCapacity);
+
+    }
+
+    @Override
     public String toString() {
         return "Марка " + getBrand() + ", модель -  " + getModel() + ", объем двигателя - " + getEngineVolume() + " л." + getClass();
     }
+
+
 }
+
 

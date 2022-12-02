@@ -3,20 +3,18 @@ package Transport;
 import java.time.LocalDate;
 import java.util.regex.Pattern;
 
-
 public class Car extends Transport implements Competing {
+
+
+    private BodyType bodyType;
     private String transmisson;
-    private String bodyType;
     private String registrNumber;
     private int numberOfSeats;
     private boolean summerTires;
     private Key key;
     private Insurance insurance;
+    //private BodyType bodyType;
 
-
-    public String getBodyType() {
-        return bodyType;
-    }
 
     public int getNumberOfSeats() {
         return numberOfSeats;
@@ -42,6 +40,10 @@ public class Car extends Transport implements Competing {
         return key;
     }
 
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
     public void setTransmisson(String transmisson) {
         if (transmisson == null) {
             this.transmisson = "Не указано";
@@ -62,12 +64,8 @@ public class Car extends Transport implements Competing {
         }
     }
 
-    public void setBodyType(String bodyType) {
-        if (bodyType == null) {
-            this.bodyType = "не указано";
-        } else {
-            this.bodyType = bodyType;
-        }
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 
     public void setNumberOfSeats(int numberOfSeats) {
@@ -102,8 +100,9 @@ public class Car extends Transport implements Competing {
         }
     }
 
-    public Car(String brand, String model, float engineVolume) {
+    public Car(String brand, String model, BodyType bodyType, float engineVolume) {
         super(brand, model, engineVolume);
+        this.bodyType=bodyType;
     }
 
     public static class Key {
@@ -176,17 +175,6 @@ public class Car extends Transport implements Competing {
         }
     }
 
-    //@Override
-    //    public void refill() {
-    //        if (getBrand() == "Audi") {
-    //            System.out.println("необходимо заправиться дизелем");
-    //        } else if (getBrand() == "BMW") {
-    //            System.out.println("необходимо заряжать на специальных электропарковках");
-    //        } else {
-    //            System.out.println("необходимо заправиться бензином");
-    //
-    //        }
-    //    }
 
     @Override
     public void goToPitStop() {
@@ -221,15 +209,14 @@ public class Car extends Transport implements Competing {
     }
 
     @Override
+    public void printType() {
+        if (bodyType == null) {
+            System.out.println("Данных по транспортному средству недостаточно.");}
+        else {
+            System.out.println(bodyType);
+        }
+        }
 
-    public String toString() {
-        return getBrand() + " " + getModel() + ", " +
-                "коробка передач " + transmisson + ", ";
-        //+ "тип кузова " + bodyType + " , количество мест "
-        // + numberOfSeats + ", рег.номер " + registrNumber + ", " + getYear() + " года выпуска, сборка в " + getCountry() + ", " + getColor() + " цвета, объем двигателя - " + engineVolume + " л,"
-        //+ (isSummerTires() ? " летние шины " : " зимние шины") + (getKey().isRemoteEngineStart() ? " удаленный запуск" : " нет удаленного запуска ") + (getKey().isKeyLessAccess() ? " безключевой доступ " : " ключевой доступ ") +
-        // ". Номер страховки " + getInsurance().getNumber() + ". Стоимост страховки " + getInsurance().getCost() + " максималочка " + getSpeedMax() + " км/ч";
-    }
 }
 
 
