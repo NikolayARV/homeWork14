@@ -3,13 +3,13 @@ package Transport;
 import static Transport.ValitUtils.validateCategory;
 import static Transport.ValitUtils.validateValues;
 
-public class Driver <B extends Transport> {
+public abstract class Driver <B extends Transport> {
     private final String name;
-    private String driverLicense;
+    private final String driverLicense;
     private int driverExperiense;
 
-    public Driver(String name) {
-
+    public Driver(String name, String driverLicense) {
+        this.driverLicense = validateCategory(driverLicense);
         this.name = validateValues(name);
          }
 
@@ -31,10 +31,6 @@ public class Driver <B extends Transport> {
         } else {
             this.driverExperiense = driverExperiense;
         }
-    }
-
-    public void setDriverLicense(String driverLicense) {
-        this.driverLicense = validateCategory(driverLicense);
     }
 
     public void startMoving(B transport) {

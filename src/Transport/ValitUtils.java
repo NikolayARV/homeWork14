@@ -1,5 +1,7 @@
 package Transport;
 
+import java.util.Objects;
+
 public class ValitUtils {
     public static String validateValues(String value) {
         if (value == null || value.isBlank() || value.isEmpty()) {
@@ -34,10 +36,10 @@ public class ValitUtils {
     }
 
     public static String validateCategory(String value) {
-        if (value == "B" || value == "C" || value == "D") {
+        if (Objects.equals(value, "B") || Objects.equals(value, "C") || Objects.equals(value, "D")) {
             return value;
         } else {
-            return "default";
+            throw  new RuntimeException("Необходимо указать тип прав!");
         }
     }
 

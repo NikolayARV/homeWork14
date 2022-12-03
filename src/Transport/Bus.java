@@ -2,10 +2,13 @@ package Transport;
 
 public class Bus extends Transport implements Competing {
     private BusCapacity busCapacity;
+
     public Bus(String brand, String model, BusCapacity busCapacity, float engineVolume) {
         super(brand, model, engineVolume);
         this.busCapacity = busCapacity;
     }
+
+
 
     public BusCapacity getBusCapacity() {
         return busCapacity;
@@ -50,6 +53,13 @@ public class Bus extends Transport implements Competing {
     public void printType() {
         System.out.println(busCapacity);
     }
+
+    @Override
+    public void getDiagnostic() {
+        System.out.println("Автобус " + getBrand() + " " + getModel() + " в диагностике не требуется");
+
+    }
+
 
     @Override
     public String toString() {

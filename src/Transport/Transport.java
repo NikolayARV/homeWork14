@@ -133,6 +133,8 @@ public abstract class Transport {
 
     public abstract void stopMoving();
 
+    public abstract void getDiagnostic();
+
     public abstract void printType();
     @Override
     public String toString() {

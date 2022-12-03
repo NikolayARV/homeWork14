@@ -13,7 +13,7 @@ public class Car extends Transport implements Competing {
     private boolean summerTires;
     private Key key;
     private Insurance insurance;
-    //private BodyType bodyType;
+    private boolean diagnostic;
 
 
     public int getNumberOfSeats() {
@@ -54,6 +54,14 @@ public class Car extends Transport implements Competing {
         } else {
             this.transmisson = "Не корректный ввод";
         }
+    }
+
+    public boolean isDiagnostic() {
+        return diagnostic;
+    }
+
+    public void setDiagnostic(boolean diagnostic) {
+        this.diagnostic = diagnostic;
     }
 
     public void setRegistrNumber(String registrNumber) {
@@ -102,7 +110,7 @@ public class Car extends Transport implements Competing {
 
     public Car(String brand, String model, BodyType bodyType, float engineVolume) {
         super(brand, model, engineVolume);
-        this.bodyType=bodyType;
+        this.bodyType = bodyType;
     }
 
     public static class Key {
@@ -211,12 +219,30 @@ public class Car extends Transport implements Competing {
     @Override
     public void printType() {
         if (bodyType == null) {
-            System.out.println("Данных по транспортному средству недостаточно.");}
-        else {
+            System.out.println("Данных по транспортному средству недостаточно.");
+        } else {
             System.out.println(bodyType);
         }
-        }
+    }
 
+    @Override
+    public void getDiagnostic() {
+        if (isDiagnostic()) {
+            System.out.println("Диагностика пройдена");
+        } else {
+            throw new RuntimeException("Необходимо пройти диагностику!");
+        }
+    }
+
+    //@Override
+    //    public void getDiagnostic(Driver driver) {
+    //        if (Objects.equals(driver.getDriverLicense(), "B")) {
+    //           System.out.println("Диагностика пройдена");
+    //       } else {
+    //            throw new RuntimeException("Необходимо указать тип прав!");
+    //       }
+    //    }
 }
+
 
 
