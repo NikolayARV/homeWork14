@@ -1,11 +1,11 @@
 package Transport;
 
 public class DriverCatD extends Driver<Bus>{
-    public DriverCatD(String name) {
-        super(name);
+    public DriverCatD(String name, String driverLicense) {
+        super(name, driverLicense);
     }
 
-    public void startMoving(Driver car) {
+    public void startMoving(DriverCatD car) {
         System.out.println("водитель " + getName() + " управляет автомобилем " + car +
                 " и будет участвовать в заезде");
     }

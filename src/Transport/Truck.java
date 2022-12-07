@@ -3,12 +3,21 @@ package Transport;
 public class Truck extends Transport implements Competing {
 
     private LoadCapacity loadCapacity;
+    private boolean diagnostic;
 
 
     public Truck(String brand, String model, LoadCapacity loadCapacity, float engineVolume) {
         super(brand, model, engineVolume);
         this.loadCapacity = loadCapacity;
 
+    }
+
+    public boolean isDiagnostic() {
+        return diagnostic;
+    }
+
+    public void setDiagnostic(boolean diagnostic) {
+        this.diagnostic = diagnostic;
     }
 
     public LoadCapacity getLoadCapacity() {
@@ -56,6 +65,23 @@ public class Truck extends Transport implements Competing {
         System.out.println(loadCapacity);
 
     }
+
+    @Override
+    public void getDiagnostic() {
+        if (isDiagnostic()) {
+            System.out.println("Диагностика пройдена");
+        } else {
+            throw new RuntimeException("Необходимо пройти диагностику!");
+        }
+    }
+// @Override
+    //    public void getDiagnostic(Driver driver) {
+    //        if (Objects.equals(driver.getDriverLicense(), "C")) {
+    //            System.out.println("Диагностика пройдена");
+    //        } else {
+    //            throw new RuntimeException("Необходимо указать тип прав!");
+    //        }
+    //    }
 
     @Override
     public String toString() {
