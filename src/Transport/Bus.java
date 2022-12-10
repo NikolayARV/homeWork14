@@ -1,11 +1,15 @@
 package Transport;
 
+import java.util.ArrayList;
+
 public class Bus extends Transport implements Competing {
     private BusCapacity busCapacity;
+
 
     public Bus(String brand, String model, BusCapacity busCapacity, float engineVolume) {
         super(brand, model, engineVolume);
         this.busCapacity = busCapacity;
+
     }
 
 

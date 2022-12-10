@@ -1,16 +1,22 @@
 package Transport;
 
+import java.util.ArrayList;
+
 public class Truck extends Transport implements Competing {
 
     private LoadCapacity loadCapacity;
     private boolean diagnostic;
 
 
+
     public Truck(String brand, String model, LoadCapacity loadCapacity, float engineVolume) {
         super(brand, model, engineVolume);
         this.loadCapacity = loadCapacity;
 
+
     }
+
+
 
     public boolean isDiagnostic() {
         return diagnostic;

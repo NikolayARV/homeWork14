@@ -1,5 +1,7 @@
 package Transport;
 
+import java.util.List;
+
 public class TestTransport {
     public static void main(String[] args) {
         Truck truck1 = new Truck("Ман", "2", LoadCapacity.N3, 12);
@@ -22,6 +24,15 @@ public class TestTransport {
         DriverCatC driverCatC = new DriverCatC("ФИО4", "C");
         DriverCatD driverCatD = new DriverCatD("ФИО5", "D");
         DriverCatD driverCatD1 = new DriverCatD("ФИО1", "D");
+
+        Sponsor sponsor1 = new Sponsor("Sponsor1");
+        Sponsor sponsor2 = new Sponsor("Sponsor2");
+        Sponsor sponsor3 = new Sponsor("Sponsor3");
+
+        Technic<Car> technic1 = new Technic<Car>("ФИ1", "Фирм1");
+        Technic<Truck> technic2 = new Technic<Truck>("ФИ2", "Фирм2");
+        Technic<Transport> technic3 = new Technic<Transport>("ФИ3", "Фирм3");
+
         driverCatB.startMoving(car3);
         driverCatC.startMoving(truck3);
         driverCatD.startMoving(bus4);
@@ -42,21 +53,63 @@ public class TestTransport {
         getDiagnostic(car2, car3, truck1, bus4, car1);
 
 
+        car1.addDriver(driverCatB);
+        car1.addSponsor(sponsor1, sponsor3);
+        car1.addTechnic(technic1);
+
+        truck1.addDriver(driverCatC);
+        truck1.addSponsor(sponsor2, sponsor1);
+        truck1.addTechnic(technic2);
+
+        bus1.addDriver(new DriverCatD("ФИО31", "D"));
+        bus1.addSponsor(sponsor3);
+        bus1.addTechnic(new Technic<Bus>("ФИО311", "Auto"));
+
+        ServiceStation serviceStation = new ServiceStation();
+
+
+        List<Transport> transports = List.of(car1, truck1, bus1);
+        for (Transport transport : transports) {
+            showInfo(transport);
+        }
+        serviceStation.addCar(car1);
+        serviceStation.addTruck(truck1);
+        serviceStation.addTruck(truck4);
+
     }
 
-    public static void getDiagnostic(Transport... transports) {
-        int count = 0;
-        try {
-            for (Transport transport : transports) {
-                transport.getDiagnostic();
-                count++;
-            }
-        } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println(count);
+    private static void showInfo(Transport transport) {
+        System.out.println("Информация по авто " + transport.getBrand() + " " + transport.getModel());
+        System.out.println("Водитель ");
+        for (Driver<?> driver : transport.getDrivers()){
+            System.out.println(driver.getName());
         }
 
+               System.out.println("Спонсоры ");
+                for (Sponsor sponsors : transport.getSponsors()) {
+                    System.out.println(sponsors.getName() + " " +sponsors.getSum() + " руб.");
+               }
+               System.out.println("Механики ");
+                for (Technic<?> technics : transport.getTechnics()) {
+                    System.out.println(technics.getName());
+                }
+
+        }
+
+
+        public static void getDiagnostic (Transport...transports){
+            int count = 0;
+            try {
+                for (Transport transport : transports) {
+                    transport.getDiagnostic();
+                    count++;
+                }
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            } finally {
+                System.out.println(count);
+            }
+
+        }
     }
-}
 

@@ -10,4 +10,7 @@ public class DriverCatB extends Driver<Car> {
         System.out.println("водитель " + getName() + " управляет автомобилем " + car +
                 " и будет участвовать в заезде");
     }
+
+
 }
+

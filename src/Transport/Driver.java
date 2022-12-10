@@ -45,7 +45,12 @@ public abstract class Driver <B extends Transport> {
         System.out.println(" необходимо заправиться");
     }
 
-
+    @Override
+    public String toString() {
+        return "Водитель " +
+                getName() +
+                ", категория прав " + driverLicense;
+    }
 }
 
 
