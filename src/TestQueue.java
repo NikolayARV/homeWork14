@@ -1,7 +1,4 @@
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Queue;
-import java.util.Random;
+import java.util.*;
 
 public class TestQueue {
     private static final List<String> NAMES = List.of(
@@ -38,6 +35,9 @@ private  static final Random RANDOM = new Random();
         System.out.println();
         System.out.println("Первая очередь :" + queue1 );
         System.out.println("Вторая очередь :" + queue2 );
+
+
+
     }
 private static void add(String name, Queue<String> queue1,
                         Queue<String> queue2) {

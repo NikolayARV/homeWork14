@@ -58,7 +58,7 @@ public class TestTransport {
         car1.addTechnic(technic1);
 
         truck1.addDriver(driverCatC);
-        truck1.addSponsor(sponsor2, sponsor1);
+        truck1.addSponsor(sponsor2, sponsor2);
         truck1.addTechnic(technic2);
 
         bus1.addDriver(new DriverCatD("ФИО31", "D"));
