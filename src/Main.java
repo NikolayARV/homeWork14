@@ -3,8 +3,12 @@ import Transport.Car;
 import Transport.Train;
 
 import java.time.LocalDate;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Queue;
 
 public class Main {
+
     public static void main(String[] args) {
         Human maksim = new Human("Максим", "Минск", -1988, "брент-менеджером");
         Human anna = new Human("Аня", "Москва", 1993, "методист образовательных программ");
@@ -79,6 +83,9 @@ public class Main {
         //bmw.refill();
         //gazel.refill();
         //kia.refill();
+
+
+
     }
 
 }

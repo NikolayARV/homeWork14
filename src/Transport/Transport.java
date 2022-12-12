@@ -1,10 +1,20 @@
 package Transport;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public abstract class Transport {
 
     private String brand;
     private String model;
     private float engineVolume;
+    private final List<Driver<?>> drivers = new ArrayList<>(1);
+    private final List<Technic<?>> technics = new ArrayList<>();
+    private final List<Sponsor> sponsors = new ArrayList<>();
+
+
+
     //private final int year;
     //private final String country;
     //private String color;
@@ -26,9 +36,33 @@ public abstract class Transport {
         } else {
             this.engineVolume = engineVolume;
         }
+
+    }
+
+    public void addDriver(Driver<?> driver) {
+        drivers.add(driver);
+    }
+    public void addTechnic(Technic<?>... technics) {
+        this.technics.addAll(Arrays.asList(technics));
+    }
+    public void addSponsor(Sponsor... sponsors) {
+        this.sponsors.addAll(Arrays.asList(sponsors));
+    }
+
+    public List<Driver<?>> getDrivers() {
+        return drivers;
+    }
+
+    public List<Technic<?>> getTechnics() {
+        return technics;
+    }
+
+    public List<Sponsor> getSponsors() {
+        return sponsors;
     }
 
     public Transport(String brand, String model) {
+
         if (brand == null || brand.isBlank() || brand.isEmpty()) {
             this.brand = "default";
         } else {
@@ -39,6 +73,8 @@ public abstract class Transport {
         } else {
             this.model = model;
         }
+
+
     }
     //if (year <= 0) {
     //  this.year = 2000;
@@ -62,6 +98,10 @@ public abstract class Transport {
     //}
 
 
+    //public ArrayList<Driver> getDrivers() {return drivers;    }
+
+
+
     public String getBrand() {
         return brand;
     }
@@ -81,6 +121,7 @@ public abstract class Transport {
             this.brand = brand;
         }
     }
+
 
     public void setModel(String model) {
         if (model == null || model.isEmpty() || model.isBlank()) {
@@ -136,6 +177,7 @@ public abstract class Transport {
     public abstract void getDiagnostic();
 
     public abstract void printType();
+
     @Override
     public String toString() {
         return "Марка " + getBrand() + ", модель -  " + getModel() + ", объем двигателя - " + getEngineVolume() + " л." + getClass();
