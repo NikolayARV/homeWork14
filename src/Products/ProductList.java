@@ -1,20 +1,53 @@
 package Products;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class ProductList {
-    private Set<Products> products = new HashSet<>();
+    private HashMap<Products, Integer> productList;
 
-    public void add(Products product) {
-        if (products.contains(product)) {
-            throw new IllegalArgumentException("Такой продукт уже есть");
+    private int totalCost=0;
 
-        }
-        products.add(product);
+    public ProductList(HashMap<Products, Integer> productList) {
+
+        this.productList = productList;
     }
 
-    public void remove(Products product) {
-        products.remove(product);
+    public HashMap<Products, Integer> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(HashMap<Products, Integer> productList) {
+        this.productList = productList;
+    }
+
+    public void sumTotalCost() {
+        for (Map.Entry<Products, Integer> count : productList.entrySet()) {
+           totalCost = count.getKey().getPrice()*count.getValue()+totalCost;
+        }
+
+        System.out.println(totalCost);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ProductList)) return false;
+        ProductList that = (ProductList) o;
+        return totalCost == that.totalCost && productList.equals(that.productList) ;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productList,  totalCost);
+    }
+
+    @Override
+    public String toString() {
+        return "ProductList{" +
+                "productList=" + productList +
+                '}';
     }
 }
+
