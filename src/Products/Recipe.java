@@ -1,18 +1,18 @@
 package Products;
 
+import java.util.HashMap;
 import java.util.Objects;
-
-public class Recipe {
+import Products.Products.*;
+public class Recipe  {
     private String name;
     private ProductList productList;
-    private int totalCost;
+    private Integer totalCost=0;
 
-    public Recipe(String name, ProductList productList, int totalCost) {
-        setName(name);
-        setProductList(productList);
-        setTotalCost(totalCost);
-
+    public Recipe(String name, ProductList productList) {
+        this.name = name;
+        this.productList = productList;
     }
+
 
     public String getName() {
         return name;
@@ -22,13 +22,7 @@ public class Recipe {
         this.name = name;
     }
 
-    public ProductList getProductList() {
-        return productList;
-    }
 
-    public void setProductList(ProductList productList) {
-        this.productList = productList;
-    }
 
     public int getTotalCost() {
         return totalCost;
@@ -36,6 +30,14 @@ public class Recipe {
 
     public void setTotalCost(int totalCost) {
         this.totalCost = totalCost;
+    }
+
+    @Override
+    public String toString() {
+        return "Рецепт " +
+                 name +
+                ": " + productList +
+                '}';
     }
 
     @Override

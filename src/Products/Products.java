@@ -3,9 +3,13 @@ package Products;
 import java.util.Objects;
 
 public class Products {
-    private final String name;
+    private  String name;
     private int price;
-    private int count;
+    //private int count;
+
+    public Products(int price) {
+        this.price = price;
+    }
 
     public Products(String name, int price, int count) {
         if (name == null || name.isEmpty() || name.isBlank()) {
@@ -18,16 +22,16 @@ public class Products {
         } else {
             this.price = price;
         }
-        if (count <= 0) {
-            throw new IllegalArgumentException("Заполните карточку товара полностью");
-        } else {
-            this.count = count;
+        //if (count <= 0) {
+        //            throw new IllegalArgumentException("Заполните карточку товара полностью");
+        //        } else {
+        //            this.count = count;
+        //        }
         }
-        }
 
 
 
-        public String getName () {
+    public String getName () {
             return name;
         }
 
@@ -43,17 +47,11 @@ public class Products {
                 this.price = price;
             }
         }
-        public int getCount () {
-            return count;
-        }
+       // public int getCount () {
+          //  return count;
+       // }
 
-        public void setCount ( int count) {
-            if (count <= 0) {
-                throw new IllegalArgumentException("Заполните карточку товара полностью");
-            } else {
-                this.count = count;
-            }
-        }
+
         @Override
         public boolean equals (Object o){
             if (this == o) return true;
@@ -69,10 +67,9 @@ public class Products {
 
         @Override
         public String toString () {
-            return "Название продукта" +
+            return "Название продукта " +
                     name + '\'' +
-                    ", цена" + price +
-                    ", количество" + count +
+                    ", цена " + price +
                     '}';
         }
     }
